@@ -19,6 +19,8 @@ class GameSystem extends System
     private var flyAnim = Gengine.getResourceCache().getAnimationSet2D('mosquito.scml', true);
     private var timer:Float = 0;
     private var border = 40;
+    private var interval = 1.5;
+    private var gameOverTimer:Float = 0.0;
 
     public function new()
     {
@@ -64,7 +66,11 @@ class GameSystem extends System
     {
         timer += dt;
 
-        if(timer > 1.0)
+        interval -= dt / 20;
+
+        interval = Math.max(interval, 0.1);
+
+        if(timer > interval)
         {
             spawnFly();
             timer = 0;
@@ -108,13 +114,32 @@ class GameSystem extends System
 
         if(Gengine.getInput().getScancodePress(41))
         {
-            engine.removeAllEntities();
-            engine.addSystem(new MenuSystem(), 2);
-            engine.removeSystem(engine.getSystem(CollisionSystem));
-            engine.removeSystem(engine.getSystem(AttackSystem));
-            engine.removeSystem(engine.getSystem(GaugeSystem));
-            engine.removeSystem(this);
+            goToMenu();
+            return;
         }
+
+        if(engine.getSystem(GaugeSystem).life <= 0)
+        {
+            gameOverTimer += dt;
+
+            if(gameOverTimer > 2)
+            {
+                if(Gengine.getInput().getMouseButtonPress(1))
+                {
+                    goToMenu();
+                }
+            }
+        }
+    }
+
+    private function goToMenu()
+    {
+        engine.removeAllEntities();
+        engine.addSystem(new MenuSystem(), 2);
+        engine.removeSystem(engine.getSystem(CollisionSystem));
+        engine.removeSystem(engine.getSystem(AttackSystem));
+        engine.removeSystem(engine.getSystem(GaugeSystem));
+        engine.removeSystem(this);
     }
 
     private function spawnFly()

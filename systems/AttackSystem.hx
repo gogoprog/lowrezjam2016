@@ -50,7 +50,7 @@ class AttackSystem extends System
 
     override public function update(dt:Float):Void
     {
-        if(headNode == null)
+        if(headNode == null || engine.getSystem(GaugeSystem).life <= 0)
         {
             return;
         }

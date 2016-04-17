@@ -17,9 +17,9 @@ class GaugeSystem extends System
 {
     private var engine:Engine;
     private var gaugeNode:GaugeNode;
-    private var life:Float = 20;
-    private var maxLife:Float = 20;
-    private var steps = [5, 10, 15, 20, 25, 30, 35, 40];
+    public var life:Float = 40;
+    private var maxLife:Float = 40;
+    private var steps = [0, 5, 10, 15, 20, 25, 30, 35, 40];
 
     public function new()
     {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r3" pixel_mode="1">
     <folder id="0">
-        <file id="0" name="tail1.png" width="19" height="34" pivot_x="0.5" pivot_y="1"/>
-        <file id="1" name="tail2.png" width="19" height="34" pivot_x="0.5" pivot_y="1"/>
-        <file id="2" name="tail3.png" width="19" height="34" pivot_x="0.5" pivot_y="1"/>
-        <file id="3" name="tail4.png" width="19" height="34" pivot_x="0.5" pivot_y="1"/>
-        <file id="4" name="tail5.png" width="19" height="34" pivot_x="0.5" pivot_y="1"/>
+        <file id="0" name="tail1.png" width="20" height="34" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="tail2.png" width="20" height="34" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="2" name="tail3.png" width="20" height="34" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="3" name="tail4.png" width="20" height="34" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="4" name="tail5.png" width="20" height="34" pivot_x="0.5" pivot_y="0.5"/>
         <file id="5" name="tongue.png" width="28" height="4" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="tail">
@@ -17,7 +17,7 @@
             </mainline>
             <timeline id="0" name="tail1_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" angle="0"/>
+                    <object folder="0" file="0" x="0" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -53,25 +53,25 @@
                     <object folder="0" file="0" angle="0"/>
                 </key>
                 <key id="1" time="149" spin="0">
-                    <object folder="0" file="1" angle="0"/>
+                    <object folder="0" file="1" x="0" angle="0"/>
                 </key>
                 <key id="2" time="300" spin="0">
-                    <object folder="0" file="2" angle="0"/>
+                    <object folder="0" file="2" x="0" angle="0"/>
                 </key>
                 <key id="3" time="450" spin="0">
-                    <object folder="0" file="3" angle="0"/>
+                    <object folder="0" file="3" x="0" angle="0"/>
                 </key>
                 <key id="4" time="600" spin="0">
-                    <object folder="0" file="4" angle="0"/>
+                    <object folder="0" file="4" x="0" angle="0"/>
                 </key>
                 <key id="5" time="750" spin="0">
-                    <object folder="0" file="3" angle="0"/>
+                    <object folder="0" file="3" x="0" angle="0"/>
                 </key>
                 <key id="6" time="900" spin="0">
-                    <object folder="0" file="2" angle="0"/>
+                    <object folder="0" file="2" x="0" angle="0"/>
                 </key>
                 <key id="7" time="1050" spin="0">
-                    <object folder="0" file="1" angle="0"/>
+                    <object folder="0" file="1" x="0" angle="0"/>
                 </key>
             </timeline>
         </animation>

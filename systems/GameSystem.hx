@@ -40,14 +40,14 @@ class GameSystem extends System
         engine.addEntity(entity);
 
         entity = new Entity();
-        entity.add(new Transform(new Vector3(20, 10, 0)));
+        entity.add(new Transform(new Vector3(22, -3, 0)));
         entity.add(new AnimatedSprite2D(Gengine.getResourceCache().getAnimationSet2D('tail.scml', true), "idle"));
         entity.add(new Tail());
         entity.get(AnimatedSprite2D).setLayer(0);
         engine.addEntity(entity);
 
         entity = new Entity();
-        entity.add(new Transform(new Vector3(0, 0, 0)));
+        entity.add(new Transform(new Vector3(1, 1, 0)));
         entity.add(new StaticSprite2D(Gengine.getResourceCache().getSprite2D('body.png', true)));
         entity.get(StaticSprite2D).setLayer(1);
         engine.addEntity(entity);

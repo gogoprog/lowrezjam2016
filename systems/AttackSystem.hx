@@ -133,6 +133,7 @@ class AttackSystem extends System
                 if(count > 0)
                 {
                     tailNode.animatedSprite2D.setAnimation("move");
+                    engine.getSystem(GaugeSystem).gainLife(count);
                 }
             }
 

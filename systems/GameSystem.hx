@@ -68,6 +68,7 @@ class GameSystem extends System
         {
             spawnFly();
             timer = 0;
+            engine.getSystem(GaugeSystem).loseLife(10);
         }
 
         for(node in flyNodes)
@@ -111,6 +112,7 @@ class GameSystem extends System
             engine.addSystem(new MenuSystem(), 2);
             engine.removeSystem(engine.getSystem(CollisionSystem));
             engine.removeSystem(engine.getSystem(AttackSystem));
+            engine.removeSystem(engine.getSystem(GaugeSystem));
             engine.removeSystem(this);
         }
     }

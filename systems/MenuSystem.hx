@@ -21,6 +21,7 @@ class MenuSystem extends System
     {
         super();
     }
+
     override public function addToEngine(_engine:Engine):Void
     {
         engine = _engine;
@@ -54,6 +55,7 @@ class MenuSystem extends System
         engine.addSystem(new AttackSystem(), 2);
         engine.addSystem(new GameSystem(), 3);
         engine.addSystem(new CollisionSystem(), 3);
+        engine.addSystem(new GaugeSystem(), 3);
 
         engine.removeSystem(this);
     }

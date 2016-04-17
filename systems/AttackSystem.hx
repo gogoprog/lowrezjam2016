@@ -35,8 +35,10 @@ class AttackSystem extends System
     override public function addToEngine(_engine:Engine):Void
     {
         engine = _engine;
-        engine.getNodeList(HeadNode).nodeAdded.add(onNodeAdded);
+        engine.getNodeList(HeadNode).nodeAdded.add(onHeadAdded);
         engine.getNodeList(TailNode).nodeAdded.add(onTailAdded);
+        engine.getNodeList(HeadNode).nodeRemoved.add(onHeadRemoved);
+        engine.getNodeList(TailNode).nodeRemoved.add(onTailRemoved);
         engine.getNodeList(TongueNode).nodeAdded.add(onTongueAdded);
         engine.getNodeList(TongueNode).nodeRemoved.add(onTongueRemoved);
 
@@ -48,9 +50,9 @@ class AttackSystem extends System
 
     override public function update(dt:Float):Void
     {
-        if(Gengine.getInput().getScancodePress(41))
+        if(headNode == null)
         {
-            Gengine.exit();
+            return;
         }
 
         if(state == "closed")
@@ -142,21 +144,26 @@ class AttackSystem extends System
                 engine.removeEntity(tongueEntity);
             }
         }
-
-        if(tongueNode != null)
-        {
-
-        }
     }
 
-    private function onNodeAdded(node:HeadNode):Void
+    private function onHeadAdded(node:HeadNode):Void
     {
         headNode = node;
+    }
+
+    private function onHeadRemoved(node:HeadNode):Void
+    {
+        headNode = null;
     }
 
     private function onTailAdded(node:TailNode):Void
     {
         tailNode = node;
+    }
+
+    private function onTailRemoved(node:TailNode):Void
+    {
+        tailNode = null;
     }
 
     private function onTongueAdded(node:TongueNode):Void

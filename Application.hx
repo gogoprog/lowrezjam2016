@@ -44,36 +44,6 @@ class Application
             }
         ");
 
-        engine.addSystem(new AttackSystem(), 2);
-        engine.addSystem(new GameSystem(), 3);
-        engine.addSystem(new CollisionSystem(), 3);
-
-        var entity:Entity;
-
-        entity = new Entity();
-        entity.add(new Transform(new Vector3(0, 0, 0)));
-        entity.add(new AnimatedSprite2D(Gengine.getResourceCache().getAnimationSet2D('bg.scml', true), "light"));
-        entity.get(AnimatedSprite2D).setLayer(0);
-        engine.addEntity(entity);
-
-        entity = new Entity();
-        entity.add(new Transform(new Vector3(20, 10, 0)));
-        entity.add(new AnimatedSprite2D(Gengine.getResourceCache().getAnimationSet2D('tail.scml', true), "idle"));
-        entity.add(new Tail());
-        entity.get(AnimatedSprite2D).setLayer(0);
-        engine.addEntity(entity);
-
-        entity = new Entity();
-        entity.add(new Transform(new Vector3(0, 0, 0)));
-        entity.add(new StaticSprite2D(Gengine.getResourceCache().getSprite2D('body.png', true)));
-        entity.get(StaticSprite2D).setLayer(1);
-        engine.addEntity(entity);
-
-        entity = new Entity();
-        entity.add(new Transform(new Vector3(-20, 10, 0)));
-        entity.add(new AnimatedSprite2D(Gengine.getResourceCache().getAnimationSet2D('head.scml', true), "idle", 2));
-        entity.add(new Head());
-        entity.get(AnimatedSprite2D).setLayer(5);
-        engine.addEntity(entity);
+        engine.addSystem(new MenuSystem(), 2);
     }
 }

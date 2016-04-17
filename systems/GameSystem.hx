@@ -30,6 +30,34 @@ class GameSystem extends System
         flyNodes = engine.getNodeList(FlyNode);
         flyNodes.nodeAdded.add(onNodeAdded);
         flyNodes.nodeRemoved.add(onNodeRemoved);
+
+        var entity:Entity;
+
+        entity = new Entity();
+        entity.add(new Transform(new Vector3(0, 0, 0)));
+        entity.add(new AnimatedSprite2D(Gengine.getResourceCache().getAnimationSet2D('bg.scml', true), "light"));
+        entity.get(AnimatedSprite2D).setLayer(0);
+        engine.addEntity(entity);
+
+        entity = new Entity();
+        entity.add(new Transform(new Vector3(20, 10, 0)));
+        entity.add(new AnimatedSprite2D(Gengine.getResourceCache().getAnimationSet2D('tail.scml', true), "idle"));
+        entity.add(new Tail());
+        entity.get(AnimatedSprite2D).setLayer(0);
+        engine.addEntity(entity);
+
+        entity = new Entity();
+        entity.add(new Transform(new Vector3(0, 0, 0)));
+        entity.add(new StaticSprite2D(Gengine.getResourceCache().getSprite2D('body.png', true)));
+        entity.get(StaticSprite2D).setLayer(1);
+        engine.addEntity(entity);
+
+        entity = new Entity();
+        entity.add(new Transform(new Vector3(-20, 10, 0)));
+        entity.add(new AnimatedSprite2D(Gengine.getResourceCache().getAnimationSet2D('head.scml', true), "idle", 2));
+        entity.add(new Head());
+        entity.get(AnimatedSprite2D).setLayer(5);
+        engine.addEntity(entity);
     }
 
     override public function update(dt:Float):Void
@@ -75,6 +103,15 @@ class GameSystem extends System
                 var x = velocity.x / Math.abs(velocity.x);
                 node.transform.setScale(new Vector3(x, 1, 1));
             }
+        }
+
+        if(Gengine.getInput().getScancodePress(41))
+        {
+            engine.removeAllEntities();
+            engine.addSystem(new MenuSystem(), 2);
+            engine.removeSystem(engine.getSystem(CollisionSystem));
+            engine.removeSystem(engine.getSystem(AttackSystem));
+            engine.removeSystem(this);
         }
     }
 

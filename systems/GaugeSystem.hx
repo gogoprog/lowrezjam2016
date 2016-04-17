@@ -54,8 +54,22 @@ class GaugeSystem extends System
 
     public function loseLife(amount:Float)
     {
-        life = Math.max(0, life - amount);
-        updateGauge();
+        if(life>0)
+        {
+            life = Math.max(0, life - amount);
+            updateGauge();
+
+            if(life<=0)
+            {
+                var entity:Entity;
+
+                entity = new Entity();
+                entity.add(new Transform(new Vector3(0, 0, 0)));
+                entity.add(new StaticSprite2D(Gengine.getResourceCache().getSprite2D('game-over.png', true)));
+                entity.get(StaticSprite2D).setLayer(13);
+                engine.addEntity(entity);
+            }
+        }
     }
 
     private function onNodeAdded(node:GaugeNode):Void
